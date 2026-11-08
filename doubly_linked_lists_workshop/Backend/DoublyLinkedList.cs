@@ -95,7 +95,7 @@
             Console.WriteLine();
         }
 
-    // 3.3 Show backwards (usando Prev)
+    // 3.3 Show backwards 
     public void DisplayBackward()
         {
             if (IsEmpty())
