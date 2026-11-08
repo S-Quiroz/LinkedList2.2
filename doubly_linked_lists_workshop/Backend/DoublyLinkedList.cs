@@ -248,22 +248,22 @@
             {
                 if (current.Data.Equals(value))
                 {
-                    if (head == tail) // Único nodo
-                    {
+                    if (head == tail) // Single node
+                {
                         head = tail = null;
                     }
-                    else if (current == head) // Es la cabeza
-                    {
+                    else if (current == head) //  the head
+                {
                         head = head.Next;
                         if (head != null) head.Prev = null;
                     }
-                    else if (current == tail) // Es la cola
-                    {
+                    else if (current == tail) // is the tail
+                {
                         tail = tail.Prev;
                         if (tail != null) tail.Next = null;
                     }
-                    else // Está en medio
-                    {
+                else // It is in the middle
+                {
                         DoubleNode<T> prevNode = current.Prev!;
                         prevNode.Next = current.Next;
                         if (current.Next != null)
