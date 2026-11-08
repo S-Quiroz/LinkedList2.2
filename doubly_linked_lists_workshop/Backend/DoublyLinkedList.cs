@@ -5,8 +5,8 @@ using System.Collections.Generic;
 
     public class DoublyLinkedList<T> where T : IComparable<T> 
     {
-    private DoubleNode<T>? head;      // nodo cabeza
-    private DoubleNode<T>? tail;         // nodo cola
+    private DoubleNode<T>? head;      // node head
+    private DoubleNode<T>? tail;         // node tail
     private int count;
         private bool ascending;
 
@@ -30,13 +30,13 @@ using System.Collections.Generic;
             return second.CompareTo(first);
         }
 
-        // 3.1 Adicionar: Inserción en orden ascendente/descendente automático
-        public void Add(T data)
+    // Addition: Insertion in automatic ascending/descending order
+    public void Add(T data)
         {
             DoubleNode<T> newNode = new DoubleNode<T>(data);
 
-            // Caso 1: Lista vacía
-            if (head == null)
+        // Case 1: Empty list
+        if (head == null)
             {
                 head = newNode;
                 tail = newNode;
@@ -46,27 +46,27 @@ using System.Collections.Generic;
 
             DoubleNode<T>? current = head;
 
-            // Recorremos mientras el nodo actual exista y su dato cumpla la condición de orden
-            while (current != null && Compare(current.Data, data) <= 0)
+        // Traverse as long as the current node exists and its data meets the ordering condition.
+        while (current != null && Compare(current.Data, data) <= 0)
             {
                 current = current.Next;
             }
 
-            // Caso 2: Insertar al inicio (si current sigue siendo head)
+            // Case 2: Insert at the beginning (if current is still head)
             if (current == head)
             {
                 newNode.Next = head;
                 head.Prev = newNode;
                 head = newNode;
             }
-            // Caso 3: Insertar al final (si current es null, significa que es mayor que todos)
+            // Case 3: Insert at the end (if current is null, it means it's greater than all existing nodes)
             else if (current == null)
             {
                 tail.Next = newNode;
                 newNode.Prev = tail;
                 tail = newNode;
             }
-            // Caso 4: Insertar en el medio (entre current.Prev y current)
+            // Case 4: Insert in the middle (between current.Prev and current)
             else
             {
                 DoubleNode<T> prev = current.Prev!;
@@ -79,7 +79,7 @@ using System.Collections.Generic;
             count++;
         }
 
-        // 3.2 Mostrar hacia adelante
+        // 3.2 Show forward
         public void DisplayForward()
         {
             if (IsEmpty())
@@ -98,8 +98,8 @@ using System.Collections.Generic;
             Console.WriteLine();
         }
 
-        // 3.3 Mostrar hacia atrás (usando Prev)
-        public void DisplayBackward()
+    // 3.3 Show backwards (usando Prev)
+    public void DisplayBackward()
         {
             if (IsEmpty())
             {
@@ -117,13 +117,13 @@ using System.Collections.Generic;
             Console.WriteLine();
         }
 
-        // 3.4 Ordenar descendentemente (invierte bandera y punteros físicos)
+        // 3.4 Sort descending (inverts flag and physical pointers)
         public void SortDescending()
         {
             if (head == null || head == tail) return;
 
-            // Cambiamos el estado de ordenamiento
-            ascending = !ascending;
+        //We change the sorting state
+        ascending = !ascending;
 
             DoubleNode<T>? current = head;
             DoubleNode<T>? temp = null;
@@ -133,8 +133,8 @@ using System.Collections.Generic;
                 temp = current.Prev;
                 current.Prev = current.Next;
                 current.Next = temp;
-                current = current.Prev; // Avanzamos por el puntero invertido
-            }
+                current = current.Prev; // We move forward along the inverted pointer
+        }
 
             temp = head;
             head = tail;
@@ -143,7 +143,7 @@ using System.Collections.Generic;
             Console.WriteLine("La lista ha cambiado su orden a descendente.");
         }
 
-    // 3.5 Mostrar la(s) moda(s)
+    // 3.5 Show the mode(s)
     public void DisplayModes()
     {
         if (IsEmpty())
@@ -199,7 +199,7 @@ using System.Collections.Generic;
             Console.WriteLine($"Las modas son {rest} y {last}.");
         }
     }
-    // 3.6 Mostrar gráfico de ocurrencias
+    // 3.6 Show occurrence chart
     public void DisplayChart()
         {
             if (IsEmpty())
@@ -230,7 +230,7 @@ using System.Collections.Generic;
             Console.WriteLine("------------------------------");
         }
 
-        // 3.7 Existe
+        // 3.7 Existe   
         public bool Exists(T value)
         {
             DoubleNode<T>? current = head;
@@ -243,8 +243,8 @@ using System.Collections.Generic;
             return false;
         }
 
-        // 3.8 Eliminar una ocurrencia
-        public bool DeleteOneOccurrence(T value)
+    // 3.8 Delete an occurrence
+    public bool DeleteOneOccurrence(T value)
         {
             DoubleNode<T>? current = head;
             while (current != null)
@@ -283,8 +283,8 @@ using System.Collections.Generic;
             return false;
         }
 
-        // 3.9 Eliminar todas las ocurrencias
-        public int DeleteAllOccurrences(T value)
+    // 3.9 Remove all occurrences
+    public int DeleteAllOccurrences(T value)
         {
             int deletedCount = 0;
             while (DeleteOneOccurrence(value))
