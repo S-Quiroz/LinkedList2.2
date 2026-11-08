@@ -1,1 +1,1 @@
-# workshop_doubly_linked_lists
+# doubly_linked_lists_workshop
