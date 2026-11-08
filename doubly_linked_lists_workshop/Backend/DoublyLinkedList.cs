@@ -1,8 +1,5 @@
 ﻿namespace Backend;
 
-using System;
-using System.Collections.Generic;
-
     public class DoublyLinkedList<T> where T : IComparable<T> 
     {
     private DoubleNode<T>? head;      // node head
