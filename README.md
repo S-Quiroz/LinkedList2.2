@@ -1,1 +1,1 @@
-# LinkedList2.2
+# doubly_linked_lists_workshop
